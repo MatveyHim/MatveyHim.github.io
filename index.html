@@ -28,11 +28,9 @@
                             </h1>
                         <div class="send_form">
                             <form action="action.php" method="post">
-                                <label> Время наблюдения(UTC): <input type="time" name="time"></label>
-                            
-                                    <input type="text" placeholder="место наблюдения" name="place">
-                                
-                                    <textarea cols="30" rows="10" placeholder="особенности" name="spec"></textarea>
+                                <p><label> Время наблюдения(UTC): <input type="time" name="time"></label></p>
+                                <p><label> Место наблюдения: <input type="text" placeholder="место" name="place"></label></p>                    
+                                <p><label> Описание наблюдения: <textarea cols="30" rows="10" placeholder="описание" name="spec"></textarea></label></p>
                                 
                                 <input type="submit" name="send" value="Отправить"></input>
                             </form>
