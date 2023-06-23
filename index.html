@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/CSS" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Revalia&family=Roboto&display=swap" rel="stylesheet">
+        <title>сайт просто сайт</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="wrapper">
+                <div class="header_wrapper">
+                        <div class="header_logo">
+                            <h1>погода</h1 class="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="intro">
+                <div class="intro_right">
+                    <div id="myModal" class="modal">     
+                        <div class="send_wrapper">
+                            <h1 class="modal_title">
+                                Отправить наблюдение
+                            </h1>
+                        <div class="send_form">
+                            <form action="action.php" method="post">
+                                <label> Время наблюдения(UTC): <input type="time" name="time"></label>
+                            
+                                    <input type="text" placeholder="место наблюдения" name="place">
+                                
+                                    <textarea cols="30" rows="10" placeholder="особенности" name="spec"></textarea>
+                                
+                                <input type="submit" name="send" value="Отправить"></input>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>
