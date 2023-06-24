@@ -29,3 +29,8 @@ header {
   width: 100%;
   justify-content: center;
 }
+
+.spec{
+  position: relative;
+  margin-bottom: auto;
+}
