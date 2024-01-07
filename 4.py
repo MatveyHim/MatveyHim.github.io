@@ -114,8 +114,8 @@ def tra(sat, time, lon, lat, alt, horizon):
             
     
     if h>=horizon:
-        str+='Satellite '+sat
-        str+=' Start date & time '+time.strftime('%Y.%m.%d %H:%M:%S')
+        str+='Satellite '+sat+'\n'
+        str+='Start date & time '+time.strftime('%Y.%m.%d %H:%M:%S')
         str+='\n\n'
         str+='Time (UTC) Azimuth Elevation'
         str+='\n\n'
