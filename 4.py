@@ -27,7 +27,7 @@ def raschot(utc_time, lon, lat, alt, horizon, mH, length):
         sat=sats[i]
         orbital = Orbital(sat, tle_file='tle.txt')
         passTimes=orbital.get_next_passes(utc_time, length, lon, lat, alt, tol=0.0001, horizon=horizon)
-        print(sat,i)
+        print(sat,len(passTimes))
         while n<len(passTimes):
 
             if len(passTimes)!=0:
@@ -39,7 +39,7 @@ def raschot(utc_time, lon, lat, alt, horizon, mH, length):
                 az,h1=orbital.get_observer_look(time1, lon, lat, alt)
                 az,h2=orbital.get_observer_look(time2, lon, lat, alt)
 
-                print(sat, passTimes[n][0].strftime('%Y.%m.%d %H:%M'))
+                #print(sat, passTimes[n][0].strftime('%Y.%m.%d %H:%M'))
                 h=str('{:.2f}'.format(round(h,2)))
                 h1=str('{:.2f}'.format(round(h1,2)))
                 h2=str('{:.2f}'.format(round(h2,2)))
@@ -56,13 +56,12 @@ def raschot(utc_time, lon, lat, alt, horizon, mH, length):
             a.pop(n)
             print()
             n-=1
-        else:
-            print(a[n],h,mH,n)
+        # else:
+        #     print(a[n],h,mH,n)
         n+=1
-    n=0
-    
-    sorted_a = sortByDate(a)
 
+    n=0
+    sorted_a = sortByDate(a)
     for i in range(len(sorted_a)):  
         if i>0:
             if sorted_a[i].get('timeUp')<sorted_a[i-1].get('timeSet'):
@@ -83,7 +82,20 @@ def raschot(utc_time, lon, lat, alt, horizon, mH, length):
                 h=str('{:.2f}'.format(round(h,2)))
 
                 sorted_a[i]=(dict(name=sat, timeUp=time.strftime('%Y.%m.%d %H:%M:%S'), hUp=h, timeMax=timeMax, hMax=h2, timeSet=timeSet, hSet=h1, lon=lon, lat=lat, alt=alt, horizon=horizon, button='button'))
+
                 print('пересекаются',time,timeUp,sat,h)
+
+    n=0
+    while n<len(sorted_a):
+        if n>0:
+            if sorted_a[n].get('timeUp')>sorted_a[n].get('timeSet'):
+                print('pop',sorted_a[n].get('timeUp'),'>',sorted_a[n].get('timeSet'),n,len(sorted_a))
+                sorted_a.pop(n)
+                print()
+                n-=1
+
+        n+=1
+
     
     return sorted_a
 
