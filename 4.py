@@ -115,10 +115,10 @@ def tra(sat, time, lon, lat, alt, horizon):
     
     if h>=horizon:
         str+='Satellite '+sat
-        str+='Start date & time '+time.strftime('%Y.%m.%d %H:%M:%S')
-        str+='\n'
+        str+=' Start date & time '+time.strftime('%Y.%m.%d %H:%M:%S')
+        str+='\n\n'
         str+='Time (UTC) Azimuth Elevation'
-        str+='\n'
+        str+='\n\n'
 
         az,h=orbital.get_observer_look(time, lon, lat, alt)
         print('Satellite ', sat, time.strftime('%H:%M:%S'), round(az,2), round(h,2))
