@@ -1,0 +1,40 @@
+{% block content %}
+  
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="text-center"></h1>
+      </div>
+      <div class="card-body">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert alert-danger">
+              <ul>
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        {% endwith %}
+        <form method="post" action="/forward/">
+          <div class="mb-3">
+            <p><label> Широта <input type="text" name="lat"></label></p>
+            <p><label> Долгота <input type="text" name="lon"></label></p>
+            <p><label> Высота <input type="text" name="h"></label></p>
+
+            <p><label> Горизонт <input type="number" name="hor" style="width: 4em" min="0" max="90" step="1"></label></p>
+            <p><label> Миниммальная высота <input type="number" name="Mh" style="width: 4em" min="0" max="90" step="0.5"></label></p>
+
+            <p><label> Начало расчёта <input type="datetime-local" name="time"></label></p>
+            <p><label> Длина расписания <input type="number" name="length" style="width: 4em" min="0" step="1"></label></p>
+          </div>
+
+            <button type="submit" class="btn btn-primary">Расчёт</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+    
+{% endblock %}
